@@ -1,7 +1,6 @@
 
 import 'package:flutter/cupertino.dart';
 
-import '../../features/NextPage.dart';
 import '../../features/home/home_screen.dart';
 
 class RoutesManager{
@@ -10,7 +9,6 @@ class RoutesManager{
 
   static Map<String, WidgetBuilder> routes = {
     home: (_) =>  HomeScreen(),
-    next: (_) =>  Nextpage(),
   };
 }
 
