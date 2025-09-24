@@ -20,64 +20,80 @@ class CaregoryItem extends StatelessWidget {
         ? category.darkImagePath!
         : category.imagePath;
 
-    return Stack(
-      children: [
-        ClipRRect(
-          borderRadius: BorderRadius.circular(15),
-          child: Image.asset(imageToShow),
-        ),
-        Positioned(
-          bottom: 20,
-          left: category.isRightAligned ? null : 20,
-          right: category.isRightAligned ? 20 : null,
-          child: Container(
-            padding: const EdgeInsets.all(5),
-            decoration: BoxDecoration(
-              color: ColorsManager.gray,
-              borderRadius: BorderRadius.circular(30),
-            ),
-            child: Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                if (!category.isRightAligned)
-                  Container(
-                    padding: const EdgeInsets.all(10),
-                    decoration: BoxDecoration(
-                      color: ColorsManager.black,
-                      shape: BoxShape.circle,
+    return Container(
+      decoration: BoxDecoration(
+        border: themeProvider.isDark
+            ? null
+            : Border.all(color: ColorsManager.gray),
+        borderRadius: BorderRadius.circular(15),
+        boxShadow: [
+          BoxShadow(
+            color: ColorsManager.gray,
+              blurRadius: 8,      
+              spreadRadius: 0,
+              offset: Offset(0, 4)
+          )
+        ],
+      ),
+      child: Stack(
+        children: [
+          ClipRRect(
+            borderRadius: BorderRadius.circular(15),
+            child: Image.asset(imageToShow),
+          ),
+          Positioned(
+            bottom: 20,
+            left: category.isRightAligned ? null : 20,
+            right: category.isRightAligned ? 20 : null,
+            child: Container(
+              padding: const EdgeInsets.all(5),
+              decoration: BoxDecoration(
+                color: ColorsManager.gray,
+                borderRadius: BorderRadius.circular(30),
+              ),
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  if (!category.isRightAligned)
+                    Container(
+                      padding: const EdgeInsets.all(10),
+                      decoration: BoxDecoration(
+                        color: ColorsManager.black,
+                        shape: BoxShape.circle,
+                      ),
+                      child: const Icon(
+                        Icons.arrow_back_ios,
+                        color: Colors.white,
+                      ),
                     ),
-                    child: const Icon(
-                      Icons.arrow_back_ios,
+                  const SizedBox(width: 8),
+                  Text(
+                    AppLocalizations.of(context)!.view_all,
+                    style: GoogleFonts.inter(
                       color: Colors.white,
+                      fontSize: 24,
+                      fontWeight: FontWeight.w500,
                     ),
                   ),
-                const SizedBox(width: 8),
-                Text(
-                  AppLocalizations.of(context)!.view_all,
-                  style: GoogleFonts.inter(
-                    color: Colors.white,
-                    fontSize: 24,
-                    fontWeight: FontWeight.w500,
-                  ),
-                ),
-                SizedBox(width: 2.w),
-                if (category.isRightAligned)
-                  Container(
-                    padding: const EdgeInsets.all(8),
-                    decoration: BoxDecoration(
-                      color: ColorsManager.black,
-                      shape: BoxShape.circle,
+                  SizedBox(width: 2.w),
+                  if (category.isRightAligned)
+                    Container(
+                      padding: const EdgeInsets.all(8),
+                      decoration: BoxDecoration(
+                        color: ColorsManager.black,
+                        shape: BoxShape.circle,
+                      ),
+                      child: const Icon(
+                        Icons.arrow_forward_ios,
+                        color: Colors.white,
+                      ),
                     ),
-                    child: const Icon(
-                      Icons.arrow_forward_ios,
-                      color: Colors.white,
-                    ),
-                  ),
-              ],
+                ],
+              ),
             ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

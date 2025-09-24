@@ -1,6 +1,6 @@
 class ImageManager{
-  static const String  _base = "assets/images";
-  static const String business = "$_base/business.png";
+  static const String  _base = "assets/images/images_light";
+  static const String business = "$_base/busniess.png";
   static const String entertainment = "$_base/entertainment.png";
   static const String general = "$_base/general.png";
   static const String helth = "$_base/helth.png";
